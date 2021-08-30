@@ -6,26 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.min.css">
     <title>Jaguar Editor</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="titles">
-            <p>html</p>
-            <p onclick="cssPanel()">css</p>
-            <p>js</p>
+        <div id="files">
+            <div class="file-header">
+                <p>Proyecto</p>
+                <button onclick="newFile()">+</button>
+            </div>
+            <div id="tree">
+            </div>
         </div>
-        <div class="code">
-            <div id="html"></div>
-            <div id="css"></div>
-            <div id="js"></div>
-        </div>
-        <iframe id="output"></iframe>
+        <div id="code" class="box"></div>
+        <div class="handler"></div>
+        <iframe id="output" class="box"></iframe>
         <div id="console"></div>
     </div>
-    <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } }</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.nls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.js"></script>
+    <script src="https://unpkg.com/emmet-monaco-es/dist/emmet-monaco.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/virtualFiles.js"></script>
+
 </body>
 
 </html>
