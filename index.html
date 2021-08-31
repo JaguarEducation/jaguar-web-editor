@@ -7,32 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.min.css">
+    <link rel="stylesheet" href="css/codicon.css">
     <title>Jaguar Editor</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-g">
         <div id="files">
-            <div class="file-header">
-                <p>Proyecto</p>
-                <button onclick="newFile()">+</button>
-            </div>
-            <div id="tree">
+            <div class="box">
+                <div id="file-header">
+                    <p class="title">Explorador</p>
+                </div>
+                <div id="file-action">
+                    <p class="title">Proyecto</p>
+                    <a onclick="newFile()">
+                    <span class="inner">
+                        <i class="codicon codicon-new-file"></i>
+                    </span></a>
+                </div>
+                <div id="tree">
+                </div>
             </div>
         </div>
-        <div id="code" class="box"></div>
-        <div class="handler"></div>
-        <iframe id="output" class="box"></iframe>
+        <div class="handler">
+        </div>
+        <div class="box">
+            <div class="code-container">
+                <div id="tabs">
+                </div>
+                <div id="code"></div>
+            </div>
+        </div>
+        <iframe id="output" class="d-none"></iframe>
         <div id="console"></div>
     </div>
-    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } }</script>
+    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } };</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.nls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.js"></script>
     <script src="https://unpkg.com/emmet-monaco-es/dist/emmet-monaco.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/virtualFiles.js"></script>
-
+    <script src="js/tabs.js"></script>
 </body>
 
 </html>

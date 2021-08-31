@@ -5,7 +5,10 @@ window.editor = monaco.editor.create(document.getElementById('code'), {
     language: '',
     theme: 'vs-dark',
     readOnly: true,
-    automaticLayout: true
+    automaticLayout: true,
+    minimap: {
+        enabled: true
+    },
   });
 
     
@@ -52,9 +55,20 @@ window.editor = monaco.editor.create(document.getElementById('code'), {
 //editor.setValue('xdd')
 
 var handler = document.querySelector('.handler');
-var wrapper = handler.closest('.container');
+var wrapper = document.querySelector('.container-g');
 var boxA = wrapper.querySelector('.box');
 var isHandlerDragging = false;
+
+handler.addEventListener('mouseenter', function(e){
+    handler.classList.remove('handler')
+    handler.classList.add('handler-hover')
+},
+true)
+handler.addEventListener('mouseleave', function(e){
+    handler.classList.remove('handler-hover')
+    handler.classList.add('handler')
+},
+true)
 
 document.addEventListener('mousedown', function(e) {
   // If mousedown event is fired from .handler, toggle flag to true
@@ -69,19 +83,19 @@ document.addEventListener('mousemove', function(e) {
     return false;
   }
 
-  // Get offset
+  // Get offset 
   var containerOffsetLeft = wrapper.offsetLeft;
 
   // Get x-coordinate of pointer relative to container
   var pointerRelativeXpos = e.clientX - containerOffsetLeft;
   
   // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
-  var boxAminWidth = 60;
+  var boxAminWidth = 1;
 
   // Resize box A
   // * 8px is the left/right spacing between .handler and its inner pseudo-element
   // * Set flex-grow to 0 to prevent it from growing
-  boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px';
+  boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px' ;
   boxA.style.flexGrow = -100;
 });
 

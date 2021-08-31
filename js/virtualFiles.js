@@ -19,6 +19,13 @@ function createFile(name) {
     p.textContent = name
     name = name.split('.').join("");
     eval('window.' + name + '= ""');
+    p.classList.add('file')
+    p.addEventListener('mouseenter', function(e){
+        p.classList.add('file-hover')
+    })
+    p.addEventListener('mouseleave', function(e){
+        p.classList.remove('file-hover')
+    })
     p.onclick = function () {
         console.log(p.textContent.split('.').join(""))
         console.log(eval(p.textContent.split('.').join("")))
@@ -28,6 +35,7 @@ function createFile(name) {
         editor.setValue(eval(p.textContent.split('.').join("")));
         editor.updateOptions({ readOnly: false, });
         documentOpened = p.textContent.split('.').join("")
+        controllerTab(p.textContent.split('.').join(""))
     }
     tree.appendChild(p)
 }
