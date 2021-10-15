@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.min.css">
+    <link rel="stylesheet" data-name="vs/editor/editor.main"
+        href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.min.css">
     <link rel="stylesheet" href="css/codicon.css">
     <title>Jaguar Editor</title>
 </head>
@@ -21,9 +22,9 @@
                 <div id="file-action">
                     <p class="title">Proyecto</p>
                     <a onclick="newFile()">
-                    <span class="inner">
-                        <i class="codicon codicon-new-file"></i>
-                    </span></a>
+                        <span class="inner">
+                            <i class="codicon codicon-new-file"></i>
+                        </span></a>
                 </div>
                 <div id="tree">
                 </div>
@@ -41,11 +42,27 @@
         <iframe id="output" class="d-none"></iframe>
         <div id="console"></div>
     </div>
+    <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
+    <script src="https://unpkg.com/isomorphic-git"></script>
+    <script type="module">
+        import http from 'https://unpkg.com/isomorphic-git@beta/http/web/index.js'
+        const fs = new LightningFS('fs')
+
+        //fs.promises.init('hi')
+        //fs.promises.mkdir('test-clone')
+        const dir = '/test-clone'
+        
+        git.clone({ fs, http, dir, url: 'https://github.com/isomorphic-git/lightning-fs', corsProxy: 'https://cors.isomorphic-git.org' }).then(console.log)
+        await fs.promises.readdir(dir);
+    </script>
     <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } };</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.nls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/editor/editor.main.js"></script>
     <script src="https://unpkg.com/emmet-monaco-es/dist/emmet-monaco.min.js"></script>
+
+
+    <script src="js/files.js"></script>
     <script src="js/index.js"></script>
     <script src="js/virtualFiles.js"></script>
     <script src="js/tabs.js"></script>
